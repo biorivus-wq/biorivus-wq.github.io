@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://biorivus-wq.github.io/sitemap.xml
+Sitemap: https://www.biorivus.pl/sitemap.xml
