@@ -8,12 +8,11 @@
   const value = readout.querySelector('.river-value');
   const description = readout.querySelector('.river-description');
   const initial = { metric: metric.textContent, value: value.textContent, description: description.textContent };
-  // Illustrative values only. Species name: https://siedliska.gios.gov.pl/monitoring-siedlisk-5?id=237&view=article
   const examples = {
-    ph: { metric: 'ODCZYN WODY · pH', value: '7,4', description: 'Jeden z parametrów fizykochemicznych wody.' },
-    ec: { metric: 'KONDUKTYWNOŚĆ · EC', value: '420 µS/cm', description: 'Przewodność elektryczna, odniesiona do 25 °C.' },
-    temp: { metric: 'TEMPERATURA WODY', value: '16,8 °C', description: 'Wynik odczytywany w miejscu pomiaru.' },
-    species: { metric: 'ROŚLINNOŚĆ WODNA', value: 'Zdrojek pospolity', description: 'Fontinalis antipyretica — przykład gatunku.' }
+    ph: { metric: 'ODCZYN WODY · pH', value: '7,4', description: 'Określa kwasowość lub zasadowość wody.' },
+    ec: { metric: 'PRZEWODNOŚĆ ELEKTROLITYCZNA', value: '420 µS/cm', description: 'Wskazuje zawartość rozpuszczonych jonów.' },
+    temp: { metric: 'TEMPERATURA WODY', value: '16,8 °C', description: 'Wpływa na natlenienie i metabolizm organizmów.' },
+    species: { metric: 'ROŚLINNOŚĆ WODNA', value: 'Jeżogłówka gałęzista', description: 'Sparganium erectum' }
   };
   let active = null;
   function show(key) {

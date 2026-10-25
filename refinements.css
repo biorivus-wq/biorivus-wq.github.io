@@ -1,8 +1,8 @@
 :root { --muted:#5b6b5f; }
 /* Readability and original-photo presentation; source photographs are unchanged. */
 .hero h1 em { white-space: normal; }
-.hero-water img { object-position:50% 64%; filter:saturate(.84) contrast(1.06) brightness(.97); }
-.hero-detail img { object-position:50% 56%; filter:saturate(.84) contrast(1.035) brightness(.96); }
+.hero-water img { object-position:50% 50%; filter:none; }
+.hero-detail img { object-position:50% 50%; filter:none; }
 .project-image img { filter:saturate(.94) contrast(1.025); }
 .gallery-image img { filter:saturate(.93) contrast(1.025); }
 .image-index { font-size:10px; letter-spacing:1px; background:rgba(12,30,23,.86); }
@@ -77,7 +77,6 @@ p, li, dd { overflow-wrap:break-word; }
 .river-bank { stroke:var(--river-bank); stroke-width:49; }
 .river-water { stroke:var(--river-water); stroke-width:29; }
 .river-current { stroke:var(--river-accent); stroke-width:1.25; stroke-dasharray:3 8; opacity:.5; }
-.river-reeds { stroke:var(--river-edge); stroke-width:1.2; stroke-linecap:round; }
 .river-point { width:44px; height:44px; position:absolute; transform:translate(-50%,-50%);
 padding:0; display:grid; place-items:center; border:1px solid var(--river-accent);
 border-radius:50%; background:var(--paper); color:var(--river-accent); font-size:13px; font-weight:600;
@@ -94,7 +93,6 @@ box-shadow:0 0 0 5px var(--river-bank); transition:background .18s,color .18s,bo
 .river-readout[data-kind="species"] .river-value { font-size:20px; }
 .offer-aside .river-description { margin:0; font-size:12px; line-height:1.65; color:var(--text); }
 .river-readout[data-kind="species"] .river-description { font-style:italic; }
-.offer-aside .river-disclaimer { margin:10px 0 0; font-size:11px; line-height:1.6; color:var(--muted); }
 .offer-aside > p { font-size:15px; }
 html[data-theme="dark"] .river-explorer { --river-bank:#253e31; --river-water:#375c4c;
 --river-edge:#819b83; --river-accent:#bdd1a2; --river-surface:#1a2c22; }
@@ -136,7 +134,7 @@ html[data-theme="dark"] .river-point[aria-pressed="true"] { color:#172f25; }
   .hero-visual { height:360px; }
   .hero-water { height:265px; width:96%; border-top-left-radius:64px; }
   .hero-detail { height:190px; width:43%; bottom:0; }
-  .hero-water img { object-position:50% 62%; }
+  .hero-water img { object-position:50% 50%; filter:none; }
   .hero-water .image-index { font-size:9px; }
   .hero-detail .image-index { font-size:8px; left:6px; bottom:8px; padding:5px; }
   .photo-caption { bottom:40px; gap:8px; }
@@ -193,3 +191,59 @@ html[data-theme="dark"] .river-point[aria-pressed="true"] { color:#172f25; }
 
 /* Secondary copy also meets normal-text contrast in the light palette. */
 .service-num, .competency > span, .education-label, .topic-format, .education-formats li > span, .education-formats > p:last-child { color:var(--muted); }
+
+/* Two quiet photographs, without overlaid slogans or image numbering. */
+.hero-visual { height:510px; }
+.hero-water { width:94%; height:420px; }
+.hero-detail { width:49%; height:auto; aspect-ratio:4/3; bottom:0; border-width:8px; }
+.hero-detail img { object-position:center; }
+.service-standards { margin:18px 0 4px; font-size:12px; line-height:1.8; color:var(--muted); }
+.service-standards a { text-decoration:underline; text-underline-offset:3px; }
+.service-standards a:hover { color:var(--ink); }
+.audience-tabs { max-width:470px; }
+.audience-panels { min-height:300px; }
+.river-metric { line-height:1.6; }
+#projects-title { font-size:clamp(34px,3.8vw,52px); line-height:1.12; }
+
+/* Four original photographs overlap gently; focus lifts every card in full. */
+.field-gallery.collage-gallery { display:block; position:relative; width:100%; max-width:650px;
+  aspect-ratio:1.05; margin-bottom:35px; isolation:isolate; }
+.collage-gallery .gallery-image { position:absolute; border:5px solid var(--paper);
+  box-shadow:0 8px 24px #00000024; cursor:zoom-in; border-radius:3px; }
+.collage-gallery .gallery-image img { filter:none; object-position:center; }
+.collage-gallery .gallery-image > span { display:none; }
+.collage-gallery .collage-butterfly { left:0; top:0; width:44%; height:58%; z-index:1; }
+.collage-gallery .collage-damselfly { right:0; top:8%; width:60%; height:39%; z-index:2; }
+.collage-gallery .collage-sparganium { left:2%; bottom:0; width:66%; height:45%; z-index:3; }
+.collage-gallery .collage-fern { right:0; bottom:3%; width:33%; height:57%; z-index:4; }
+.collage-gallery .gallery-image:hover, .collage-gallery .gallery-image:focus-visible { z-index:5; }
+.collage-gallery .gallery-image:focus-visible { outline:3px solid var(--ink); outline-offset:4px; }
+.collage-gallery .gallery-credit { position:absolute; left:0; right:0; top:100%; margin-top:17px; }
+@media (max-width:1100px) and (min-width:801px) {
+  .hero-visual { height:440px; }
+  .hero-water { height:350px; }
+  .hero-detail { width:53%; }
+  .audience-inner { gap:45px; }
+}
+@media (max-width:800px) {
+  .hero-visual { height:475px; }
+  .hero-water { height:390px; }
+  .hero-detail { width:47%; }
+  .audience-panels { min-height:290px; }
+  .field-gallery.collage-gallery { justify-self:center; }
+}
+@media (max-width:480px) {
+  .hero-visual { height:auto; aspect-ratio:1.08; }
+  .hero-water { height:80%; width:96%; border-top-left-radius:64px; }
+  .hero-detail { width:53%; height:auto; bottom:0; border-width:5px; }
+  .audience-tabs { gap:8px; }
+  .audience-tabs button { padding:10px 12px; }
+  .audience-panels { min-height:350px; }
+  .field-gallery.collage-gallery { aspect-ratio:.95; margin-bottom:32px; }
+  .collage-gallery .gallery-image { border-width:3px; }
+  .collage-gallery .collage-butterfly { width:46%; height:57%; }
+  .collage-gallery .collage-damselfly { width:58%; height:35%; top:9%; }
+  .collage-gallery .collage-sparganium { width:67%; height:42%; bottom:3%; }
+  .collage-gallery .collage-fern { width:34%; height:55%; bottom:7%; }
+  .collage-gallery .gallery-credit { margin-top:6px; }
+}
