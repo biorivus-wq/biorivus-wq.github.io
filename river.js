@@ -12,7 +12,7 @@
     ph: { metric: 'ODCZYN WODY · pH', value: '7,4', description: 'Określa kwasowość lub zasadowość wody.' },
     ec: { metric: 'PRZEWODNOŚĆ ELEKTROLITYCZNA', value: '420 µS/cm', description: 'Wskazuje zawartość rozpuszczonych jonów.' },
     temp: { metric: 'TEMPERATURA WODY', value: '16,8 °C', description: 'Wpływa na natlenienie i metabolizm organizmów.' },
-    species: { metric: 'ROŚLINNOŚĆ WODNA', value: 'Jeżogłówka gałęzista', description: 'Sparganium erectum' }
+    species: { metric: 'ROŚLINNOŚĆ WODNA', value: 'Jeżogłówka gałęzista', description: 'Sparganium erectum. Roślina płytkich wód i brzegów, o kulistych kwiatostanach na rozgałęzionej łodydze.' }
   };
   let active = null;
   function show(key) {
