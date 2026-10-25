@@ -9,9 +9,9 @@
   const description = readout.querySelector('.river-description');
   const initial = { metric: metric.textContent, value: value.textContent, description: description.textContent };
   const examples = {
-    ph: { metric: 'ODCZYN WODY · pH', value: '7,4', description: 'Określa kwasowość lub zasadowość wody.' },
-    ec: { metric: 'PRZEWODNOŚĆ ELEKTROLITYCZNA', value: '420 µS/cm', description: 'Wskazuje zawartość rozpuszczonych jonów.' },
-    temp: { metric: 'TEMPERATURA WODY', value: '16,8 °C', description: 'Wpływa na natlenienie i metabolizm organizmów.' },
+    ph: { metric: 'ODCZYN WODY · pH', value: '7,4', description: 'Określa kwasowość lub zasadowość wody. Wpływa na warunki życia organizmów i dostępność substancji.' },
+    ec: { metric: 'PRZEWODNOŚĆ ELEKTROLITYCZNA', value: '420 µS/cm', description: 'Wskazuje zawartość rozpuszczonych jonów. Pomaga ocenić mineralizację wody i wychwycić jej zmiany.' },
+    temp: { metric: 'TEMPERATURA WODY', value: '16,8 °C', description: 'Wpływa na ilość tlenu rozpuszczonego w wodzie, metabolizm organizmów i tempo procesów biologicznych.' },
     species: { metric: 'ROŚLINNOŚĆ WODNA', value: 'Jeżogłówka gałęzista', description: 'Sparganium erectum. Roślina płytkich wód i brzegów, o kulistych kwiatostanach na rozgałęzionej łodydze.' }
   };
   let active = null;
