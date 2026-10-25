@@ -353,3 +353,98 @@ a.action-hero > .link-icon { width:24px; height:24px; flex-basis:24px; }
   .project-card .project-image--cover img { padding:10px 10px 28px; }
   .project-card .project-image--screen img { padding:12px 12px 30px; }
 }
+
+/* Two offers, followed by the person, experience and the working process. */
+:root { --surface-expertise:#edf2ed; --surface-education:#eeeee1; --surface-about:#f6f5ef; --surface-projects:#e5eeeb; --surface-field:#f0f2eb; --surface-process:#e7ecdf; }
+html[data-theme="dark"] { --surface-expertise:#14251f; --surface-education:#252e21; --surface-about:#121e19; --surface-projects:#1a2d2b; --surface-field:#17281f; --surface-process:#252e26; }
+.expertise-section { background:var(--surface-expertise); }
+.education-section, html[data-theme="dark"] .education-section { background:var(--surface-education); border-top:0; }
+.about-section { background:var(--surface-about); }
+.projects-section, html[data-theme="dark"] .projects-section { background:var(--surface-projects); }
+.field-band { background:var(--surface-field); }
+.process-section { background:var(--surface-process); }
+.field-band .field-section { padding-block:90px 100px; }
+.about-section .publications { border-top-color:var(--line); }
+.hero { grid-template-columns:1.04fr 1fr; gap:clamp(30px,4vw,64px); padding-block:55px 60px; }
+.hero h1 { font-size:clamp(58px,5.6vw,82px); margin:22px 0 24px; }
+.hero-intro { max-width:470px; }
+.hero-author { margin-top:28px; }
+.hero-visual.hero-landscape { aspect-ratio:1.16; border-bottom-right-radius:78px; }
+.header { gap:20px; }
+.header nav { gap:22px; font-size:13px; }
+.header .nav-cta.section-link { font-size:13px; padding:10px 12px; }
+.offer .section-heading > .eyebrow { max-width:260px; line-height:1.8; }
+.education-topics { grid-template-columns:repeat(2,minmax(0,1fr)); gap:34px 44px; }
+.education-topics article { min-width:0; padding:28px 0 0; border-top:1px solid var(--line); }
+.education-topics article + article { padding-left:0; border-left:0; }
+.education-topics h4 { font-size:28px; }
+.education-topics p { font-size:15px; line-height:1.8; }
+.education-topics .topic-symbol { font-size:32px; line-height:1.2; display:block; margin-bottom:18px; }
+.education-topics .topic-format { display:block; margin-top:20px; line-height:1.6; }
+.education-topics-heading { border-top:0; padding-top:0; margin-top:60px; }
+.education-formats { background:color-mix(in srgb,var(--green) 9%,var(--surface-education)); }
+html[data-theme="dark"] .education-formats { background:#2e3c29; }
+.project-card .project-image { display:block; position:relative; width:100%; aspect-ratio:4/3; padding:0; border:0; border-radius:0; color:#eef3e9; cursor:zoom-in; }
+.project-card .project-image > span { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 16px; min-height:40px; text-align:left; }
+.project-card .project-image .link-icon { width:20px; height:20px; flex-basis:20px; }
+.project-card .project-image:focus-visible { outline:3px solid var(--lime); outline-offset:-4px; z-index:1; }
+.project-card .project-image--poster { background:#37372a; }
+.project-card .project-image--poster img { object-fit:contain; padding:0 0 40px; }
+.project-card .project-image--cover { background:#90afac; }
+.project-card .project-image--cover img { object-fit:contain; padding:14px 14px 54px; }
+.project-card .project-image--screen { background:#e8ede4; }
+.project-card .project-image--screen img { object-fit:contain; padding:20px 20px 60px; }
+.project-card .project-story h3 { text-wrap:balance; }
+@media (max-width:1180px) {
+ .header { height:81px; padding:0 5%; gap:16px; }
+ .header .brand-logo { width:69px; height:69px; }
+ .header .brand { gap:11px; }
+ .header .brand small { padding-left:11px; font-size:8px; letter-spacing:1.5px; }
+ .menu-toggle { display:flex; align-items:center; gap:10px; background:none; border:0; color:var(--ink); padding:10px 0; font-size:13px; }
+ .menu-toggle svg { stroke:currentColor; stroke-width:1; }
+ .header nav { display:none; position:absolute; top:80px; left:0; right:0; background:var(--paper); padding:25px 5% 30px; border-bottom:1px solid var(--line); box-shadow:0 16px 20px #102c1210; gap:22px; align-items:stretch; font-size:15px; }
+ .header nav.open { display:flex; flex-direction:column; }
+ .header .nav-cta { margin-left:0; width:fit-content; }
+}
+@media (max-width:1100px) and (min-width:801px) {
+ .hero { gap:30px; }
+ .hero h1 { font-size:61px; letter-spacing:-3px; }
+ .hero h1 em { font-size:45px; letter-spacing:-2px; }
+ .hero-visual.hero-landscape { aspect-ratio:.95; border-bottom-right-radius:60px; }
+}
+@media (max-width:800px) {
+ .hero { grid-template-columns:1fr; gap:30px; padding:42px 6%; }
+ .hero-copy { max-width:650px; }
+ .hero h1 { font-size:70px; }
+ .hero h1 em { font-size:52px; }
+ .hero-intro { max-width:580px; }
+ .hero-visual.hero-landscape { aspect-ratio:1.65; max-width:none; border-bottom-right-radius:56px; }
+ .field-band .field-section { padding-block:65px; }
+ .education-topics { gap:30px; }
+ .education-topics h4 { font-size:25px; }
+ .project-card .project-image { aspect-ratio:4/3; max-height:480px; }
+}
+@media (max-width:520px) {
+ .header { gap:10px; }
+ .header-actions { gap:12px; }
+ .hero h1 { font-size:58px; letter-spacing:-3px; }
+ .hero h1 em { font-size:39px; letter-spacing:-1.9px; }
+ .hero-author { margin-top:24px; }
+ .hero-visual.hero-landscape { aspect-ratio:1.25; border-bottom-right-radius:48px; }
+ .education-topics { grid-template-columns:1fr; gap:26px; }
+ .education-topics article { padding-top:24px; }
+ .education-topics p { font-size:15px; }
+ .project-card .project-image > span { font-size:8px; padding:8px 12px; min-height:40px; }
+ .project-card .project-image--cover img { padding:8px 8px 48px; }
+ .project-card .project-image--screen img { padding:12px 12px 52px; }
+ .field-band .field-section { padding-block:59px; }
+}
+@media (max-width:360px) {
+ .hero h1 { font-size:51px; }
+ .hero h1 em { font-size:34px; letter-spacing:-1.7px; }
+ .project-card .project-story h3 { font-size:28px; }
+}
+
+/* Full project artwork stays centered in the shared enlargement dialog. */
+.image-dialog > img { width:auto; height:auto; max-width:88vw; max-height:78vh; margin-inline:auto; }
+.image-dialog > p { text-align:center; }
