@@ -251,3 +251,73 @@ html[data-theme="dark"] .river-point[aria-pressed="true"] { color:#172f25; }
   .hero-actions { gap:8px; }
   .hero-actions .button { padding-inline:11px; gap:6px; font-size:12px; }
 }
+
+
+/* One type for on-page actions, one type for external references. */
+.link-icon { display:block; width:22px; height:22px; flex:0 0 22px; color:inherit; }
+a.section-link, a.source-link {
+  font:600 14px/1.5 var(--sans); letter-spacing:0; text-align:left;
+  display:inline-flex; align-items:center; justify-content:space-between; gap:12px;
+  width:fit-content; max-width:100%; min-height:44px; vertical-align:middle;
+  white-space:normal; color:var(--ink); text-decoration:none;
+  transition:background-color .18s, border-color .18s, color .18s;
+}
+a.section-link { padding:10px 14px; border:1px solid color-mix(in srgb,currentColor 38%,transparent);
+  border-radius:3px; background:transparent; }
+a.section-link:hover { background:color-mix(in srgb,currentColor 7%,transparent); border-color:currentColor; text-decoration:none; }
+a.source-link { padding:8px 0; border:0; border-bottom:1px solid color-mix(in srgb,currentColor 45%,transparent);
+  border-radius:0; background:transparent; }
+a.source-link:hover { border-bottom-color:currentColor; text-decoration:none; }
+a.source-link:hover .link-label { text-decoration:underline; text-underline-offset:4px; }
+a.section-link > .link-label, a.source-link > .link-label { flex:1 1 auto; min-width:0; font:inherit; }
+a.section-link:focus-visible, a.source-link:focus-visible { outline:3px solid currentColor; outline-offset:5px; }
+a.action-hero > .link-label { font:inherit; min-width:0; }
+a.action-hero > .link-icon { width:24px; height:24px; flex-basis:24px; }
+.audience-panels .section-link { color:var(--lime); margin-top:24px; }
+.about-body > .section-link { margin-top:30px; }
+.education-lead .source-link { margin-top:24px; }
+.field-heading .source-link { margin-top:8px; }
+.project-grid > article > .source-link { margin-top:23px; }
+.project-links { gap:12px; }
+.project-links .source-link { margin-top:0; }
+.education-cta .section-link { flex-shrink:0; }
+.offer-aside > .section-link { margin-top:4px; }
+.header .nav-cta.section-link { gap:12px; padding:10px 14px; color:var(--ink); }
+.header .nav-cta.section-link:hover { color:var(--ink); }
+.service-standards { display:flex; flex-wrap:wrap; align-items:center; gap:4px 20px; margin:18px 0 4px; }
+.service-standards .standards-label { flex-basis:100%; font-size:12px; }
+.service-standards a.source-link { text-decoration:none; }
+
+/* Bibliographic entries retain their useful title/metadata hierarchy. */
+.publication-list a.source-link--publication { display:block; width:100%; padding:20px 44px 20px 0;
+  border-bottom-color:var(--line); }
+.publication-list a.source-link--publication:first-child { padding-top:0; }
+.publication-list a.source-link--publication > span { font:600 11px/1.6 var(--sans); letter-spacing:.8px; margin-bottom:8px; }
+.publication-list a.source-link--publication strong { font:inherit; }
+.publication-list a.source-link--publication > .link-icon { position:absolute; right:2px; top:50%; transform:translateY(-50%); }
+.publication-list a.source-link--publication:first-child > .link-icon { margin-top:-10px; }
+.publication-list a.source-link--publication:hover { border-bottom-color:currentColor; }
+.footer-main > div { gap:8px; }
+.footer-main > div .source-link { align-self:flex-start; }
+.footer-bottom > .section-link { min-height:44px; color:var(--ink); }
+.contact-email { display:inline-flex; align-items:center; gap:14px; max-width:100%; }
+.contact-email .link-icon { width:24px; height:24px; flex-basis:24px; }
+.brief-form > .button .link-icon { width:24px; height:24px; flex-basis:24px; }
+
+@media (max-width:800px) {
+  .offer-aside > .section-link { display:none; }
+}
+@media (max-width:480px) {
+  .hero-actions a.action-hero > .link-icon { width:22px; height:22px; flex-basis:22px; }
+  a.section-link, a.source-link { font-size:14px; }
+  .section-link .link-icon, .source-link .link-icon { width:22px; height:22px; flex-basis:22px; }
+  .education-cta .section-link { flex-shrink:1; }
+  .contact-email { gap:10px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  a.section-link, a.source-link { transition:none; }
+}
+@media (forced-colors:active) {
+  a.section-link { border-color:LinkText; }
+  a.source-link { border-bottom-color:LinkText; }
+}
