@@ -40,3 +40,79 @@ themeToggle.addEventListener('click', () => {
 window.addEventListener('storage', event => {
   if (event.key === 'biorivus-theme' || event.key === null) applyTheme(event.newValue);
 });
+
+
+// The timeline previews a project on focus and opens its native disclosure on selection.
+(function initProjectTimeline() {
+  const timeline = document.querySelector('.project-timeline');
+  if (!timeline) return;
+  const projects = [
+  {
+    "id": "gorczynka",
+    "year": "2026",
+    "short": "Przyroda nad Górczynką",
+    "summary": "Koordynacja projektu, spacery BioBlitz i wspólne dokumentowanie przyrody nad miejskim strumieniem."
+  },
+  {
+    "id": "dzikosc",
+    "year": "2025",
+    "short": "Dzikość jest tu!",
+    "summary": "Koordynacja działań nad Górczynką, wsparcie przyrodnicze i współtworzenie filmów dla projektu finansowanego przez WWF Polska."
+  },
+  {
+    "id": "sos",
+    "year": "2025",
+    "short": "SOS dla rzek",
+    "summary": "Wsparcie merytoryczne i współtworzenie filmów towarzyszących narzędziownikowi Klubu Przyrodników."
+  },
+  {
+    "id": "credit4ce",
+    "year": "2025",
+    "short": "Kalkulator CREDIT4CE",
+    "summary": "Koordynacja opracowania kalkulatora, metodyka obliczeń i wskaźniki emisji — zadanie realizowane w ramach pracy w PPNT."
+  }
+];
+  const points = Array.from(timeline.querySelectorAll('.timeline-point'));
+  const panels = projects.map(project => document.getElementById('case-' + project.id));
+  const readout = timeline.querySelector('.timeline-readout');
+  let selectedId = projects[0].id;
+  function preview(id) {
+    const project = projects.find(item => item.id === id);
+    if (!project) return;
+    readout.querySelector('.timeline-readout-year').textContent = project.year;
+    readout.querySelector('h4').textContent = project.short;
+    readout.querySelector('.timeline-readout-description').textContent = project.summary;
+    points.forEach(point => point.classList.toggle('is-previewed', point.dataset.project === id));
+  }
+  function syncExpanded() {
+    points.forEach((point, index) => {
+      point.setAttribute('aria-expanded', String(panels[index].open));
+      point.classList.toggle('is-open', panels[index].open);
+    });
+  }
+  points.forEach((point, index) => {
+    point.addEventListener('pointerenter', () => preview(point.dataset.project));
+    point.addEventListener('focus', () => preview(point.dataset.project));
+    point.addEventListener('click', () => {
+      selectedId = point.dataset.project;
+      panels.forEach((panel, panelIndex) => { panel.open = panelIndex === index; });
+      preview(selectedId);
+      syncExpanded();
+    });
+    panels[index].addEventListener('toggle', () => {
+      if (panels[index].open) {
+        selectedId = point.dataset.project;
+        preview(selectedId);
+      }
+      syncExpanded();
+    });
+  });
+  timeline.addEventListener('pointerleave', () => preview(selectedId));
+  timeline.addEventListener('focusout', event => {
+    if (!timeline.contains(event.relatedTarget)) preview(selectedId);
+  });
+  preview(selectedId);
+  syncExpanded();
+  timeline.hidden = false;
+  timeline.closest('.project-experience-layout').classList.add('has-timeline');
+})();
