@@ -151,6 +151,15 @@
   const disclosure = document.getElementById('mobile-career');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let active = null, leaveTimer, frame;
+  function positionTooltip(point) {
+    const bounds=canvas.getBoundingClientRect();
+    const labelEdge=Math.max(...points.map(item=>item.getBoundingClientRect().right));
+    const left=Math.min(labelEdge-bounds.left+12,window.innerWidth-bounds.left-tooltip.offsetWidth-16);
+    const top=Math.max(0,Math.min(point.offsetTop-32,canvas.clientHeight-tooltip.offsetHeight));
+    tooltip.style.left=left+'px';
+    tooltip.style.top=top+'px';
+    tooltip.style.setProperty('--career-arrow-top',Math.max(18,Math.min(point.offsetTop-top-6,tooltip.offsetHeight-26))+'px');
+  }
   function drawRiver() {
     if (desktop.matches) {
       svg.setAttribute('viewBox','0 0 300 420');
@@ -160,6 +169,7 @@
         point.style.left = (position.x/300*100)+'%';
         point.style.top = (position.y/420*100)+'%';
       });
+      if(active&&!tooltip.hidden)positionTooltip(points.find(point=>point.dataset.milestone===active));
     } else if (disclosure.open) {
       const bounds = canvas.getBoundingClientRect();
       if (!bounds.width || !bounds.height) return;
@@ -200,9 +210,12 @@
     tooltip.hidden = false;
     points.forEach(item=>{const current=item===point;item.classList.toggle('is-active',current);item.setAttribute('aria-expanded',String(current));});
     if (desktop.matches) {
-      const targetTop=point.offsetTop-32;
-      tooltip.style.top=Math.max(0,Math.min(targetTop,canvas.clientHeight-tooltip.offsetHeight))+'px';
-    } else tooltip.style.removeProperty('top');
+      positionTooltip(point);
+    } else {
+      tooltip.style.removeProperty('top');
+      tooltip.style.removeProperty('left');
+      tooltip.style.removeProperty('--career-arrow-top');
+    }
     if (changed && !reducedMotion.matches) tooltip.animate([{opacity:0,transform:desktop.matches?'translateX(-8px)':'translateY(-5px)'},{opacity:1,transform:'translate(0)'}],{duration:200,easing:'ease-out'});
     scheduleDraw();
   }

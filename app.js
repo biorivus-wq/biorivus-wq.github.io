@@ -42,3 +42,59 @@ window.addEventListener('storage', event => {
 });
 
 
+
+// One open description within each section, including browsers without native details grouping.
+(function initExclusiveDescriptions() {
+  document.querySelectorAll('details').forEach(detail=>{
+    detail.addEventListener('toggle',()=>{
+      const group=detail.getAttribute('name');
+      if(!detail.open||!group)return;
+      document.querySelectorAll('details[name]').forEach(other=>{
+        if(other!==detail&&other.getAttribute('name')===group)other.open=false;
+      });
+    });
+  });
+})();
+
+// Keep the desktop process readable at a glance; use the same disclosure pattern on mobile.
+(function initResponsiveProcess() {
+  const desktop=window.matchMedia('(min-width:1024px)');
+  const steps=Array.from(document.querySelectorAll('.process-step'));
+  const mobileState=new Map(steps.map(step=>[step,false]));
+  let changing=false;
+  steps.forEach(step=>{
+    const summary=step.querySelector('summary');
+    summary.addEventListener('click',event=>{if(desktop.matches)event.preventDefault();});
+    step.addEventListener('toggle',()=>{if(!changing&&!desktop.matches)mobileState.set(step,step.open);});
+  });
+  function update() {
+    changing=true;
+    steps.forEach(step=>{
+      const summary=step.querySelector('summary');
+      if(desktop.matches) {
+        step.removeAttribute('name');step.open=true;
+        summary.setAttribute('aria-disabled','true');summary.tabIndex=-1;
+      } else {
+        step.setAttribute('name','process-steps');step.open=mobileState.get(step);
+        summary.removeAttribute('aria-disabled');summary.removeAttribute('tabindex');
+      }
+    });
+    changing=false;
+  }
+  desktop.addEventListener('change',update);
+  update();
+})();
+
+// The profile follows the text, while a tall card can still be read in a short viewport.
+(function initStickyProfile() {
+  const card=document.querySelector('.about-signature');
+  const header=document.querySelector('header');
+  if(!card)return;
+  function update() {
+    const offset=Math.min(header.getBoundingClientRect().height+20,window.innerHeight-card.offsetHeight-20);
+    card.style.setProperty('--profile-sticky-top',offset+'px');
+  }
+  new ResizeObserver(update).observe(card);
+  window.addEventListener('resize',update,{passive:true});
+  update();
+})();
