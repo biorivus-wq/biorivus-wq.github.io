@@ -658,3 +658,83 @@ html[data-theme="dark"] .career-tooltip { background:#20342d; box-shadow:0 10px 
  .career-stone { border-color:ButtonText; }
  .career-tooltip { border:1px solid CanvasText; }
 }
+
+/* Compact, opt-in field notes and career history for phones and tablets. */
+.mobile-disclosure { display:none; }
+.career-facts { margin:14px 0 0; }
+.career-facts > div + div { border-top:1px solid var(--line); margin-top:12px; padding-top:12px; }
+.career-facts dt { margin:0 0 5px; font-size:9px; line-height:1.4; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
+.career-facts dd { margin:0; border:0; padding:0; font-size:13px; line-height:1.65; }
+.project-accordion .project-image--gorczynka { height:auto; aspect-ratio:2.35; background:var(--surface-projects); }
+.project-accordion .project-image--gorczynka img { padding-bottom:40px; object-fit:contain; }
+@media (max-width:1023px) {
+ .offer .offer-aside { display:none; }
+ .mobile-disclosure { display:block; grid-column:1 / -1; margin-top:34px; border:1px solid var(--line); border-radius:5px; background:color-mix(in srgb,var(--ink) 3%,transparent); overflow:hidden; }
+ .mobile-disclosure > summary { display:flex; align-items:center; gap:16px; padding:17px 18px; min-height:110px; cursor:pointer; list-style:none; color:var(--ink); }
+ .mobile-disclosure > summary::-webkit-details-marker { display:none; }
+ .mobile-disclosure > summary::marker { content:''; }
+ .mobile-disclosure > summary:focus-visible { outline:2px solid var(--ink); outline-offset:-4px; border-radius:5px; }
+ .mobile-disclosure > summary:hover { background:color-mix(in srgb,var(--ink) 3%,transparent); }
+ .disclosure-copy { flex:1; min-width:0; }
+ .disclosure-label { display:block; font-size:18px; line-height:1.35; font-weight:500; letter-spacing:-.35px; }
+ .disclosure-hint { display:block; margin-top:7px; font-size:11px; line-height:1.55; color:var(--muted); }
+ .disclosure-chevron { width:24px; height:24px; flex:0 0 24px; transition:transform .22s ease; }
+ .mobile-disclosure[open] > summary .disclosure-chevron { transform:rotate(180deg); }
+ .mobile-disclosure[open] > summary { border-bottom:1px solid var(--line); }
+ .disclosure-river { display:block; width:62px; height:72px; flex:0 0 62px; color:var(--green); overflow:hidden; }
+ html[data-theme='dark'] .disclosure-river { color:#9bbdaf; }
+ .disclosure-bank { stroke:currentColor; stroke-width:21; opacity:.12; }
+ .disclosure-water { stroke:currentColor; stroke-width:12; opacity:.3; }
+ .disclosure-current { stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-dasharray:2 17; animation:disclosure-current 9s linear infinite; animation-play-state:paused; }
+ .disclosure-river circle { fill:var(--paper); stroke:currentColor; stroke-width:1.5; }
+ .disclosure-river .disclosure-ripple { fill:none; opacity:.4; transform-origin:45px 33px; animation:disclosure-ripple 3.5s ease-out infinite; animation-play-state:paused; }
+ .mobile-disclosure.is-in-view .disclosure-current, .mobile-disclosure.is-in-view .disclosure-ripple { animation-play-state:running; }
+ .mobile-disclosure-body { padding:18px; }
+ .mobile-measurements .research-station { margin:0; padding:0; border:0; background:transparent; }
+ .mobile-measurements .station-heading h3 { font-size:25px; }
+ .mobile-measurements .station-heading p { font-size:12px; line-height:1.6; color:var(--muted); margin:9px 0 17px; }
+ .mobile-measurements .station-map-shell { height:220px; }
+ .mobile-measurements .station-measurements { margin-top:15px; }
+ .mobile-measurements .station-measurements dt { font-size:11px; }
+ .mobile-measurements .station-measurements dd { font-size:24px; }
+ .mobile-measurements .station-measurements dd span { font-size:10px; }
+ .mobile-measurements .station-map-link { padding-top:14px; font-size:12px; }
+ .mobile-career .career-river { display:block; position:static; padding:0; max-width:620px; margin-inline:auto; --career-surface:var(--surface-about); }
+ .mobile-career .career-river h3 { display:none; }
+ .mobile-career .career-hint { margin-top:7px; font-size:12px; }
+ .mobile-career .career-canvas { height:auto; margin-top:18px; padding:8px 0; }
+ .mobile-career .career-waterway { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+ .mobile-career .career-contour { display:none; }
+ .mobile-career .career-bank { stroke-width:23; }
+ .mobile-career .career-water { stroke-width:13; }
+ .mobile-career .career-points { position:relative; }
+ .mobile-career .career-points li { position:relative; padding:8px 0; min-height:76px; }
+ .mobile-career .career-points li:nth-child(even) { padding-left:20px; }
+ .mobile-career .career-point { position:relative; left:auto !important; top:auto !important; transform:none; width:100%; max-width:100%; gap:12px; min-height:54px; padding:4px 0; }
+ .mobile-career .career-stone { background:var(--career-surface); box-shadow:0 0 0 4px var(--career-surface); }
+ .mobile-career .career-point-copy { background:transparent; padding:5px 7px; }
+ .mobile-career .career-year { font-size:11px; }
+ .mobile-career .career-label { font-size:15px; }
+ .mobile-career .career-tooltip { position:relative; inset:auto; width:calc(100% - 34px); max-width:none; margin:8px 0 8px 34px; padding:18px 16px; background:var(--career-surface); box-shadow:none; }
+ .mobile-career .career-tooltip::before { display:none; }
+ .mobile-career .career-tooltip h4 { font-size:22px; padding-right:12px; }
+ .mobile-career .career-date, .mobile-career .career-place { font-size:11px; }
+ .mobile-career .career-facts dd { font-size:13px; }
+ .mobile-career .career-tooltip-close { width:40px; height:40px; top:2px; right:2px; }
+ .mobile-career .career-facts { margin-top:13px; }
+ .project-accordion .project-image--gorczynka { aspect-ratio:2.05; }
+}
+@media (max-width:380px) {
+ .mobile-disclosure > summary { gap:11px; padding:15px 12px; }
+ .disclosure-river { width:48px; flex-basis:48px; }
+ .disclosure-label { font-size:16px; }
+ .disclosure-hint { font-size:10px; }
+ .mobile-disclosure-body { padding:15px 12px; }
+ .mobile-career .career-label { font-size:14px; }
+}
+@keyframes disclosure-current { to { stroke-dashoffset:-190; } }
+@keyframes disclosure-ripple { 0% { transform:scale(.7);opacity:.65; } 75%,100% { transform:scale(1.45);opacity:0; } }
+@media (prefers-reduced-motion:reduce) {
+ .disclosure-current, .disclosure-ripple { animation:none; }
+ .disclosure-chevron { transition:none; }
+}
